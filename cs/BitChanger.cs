@@ -1,6 +1,14 @@
+//ImageConverter.cs
+//Created by Torisima 2025
+//License : https://github.com/Dev-Torisima/Imqutive-Codes/blob/main/LICENSE
 
-
-//
+using System;
+using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using Imqutive;
 
 namespace Imqutive
 {
