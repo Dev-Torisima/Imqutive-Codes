@@ -1,3 +1,8 @@
+//Json.cpp
+//Created by Torisima 2025
+//License : https://github.com/Dev-Torisima/Imqutive-Codes/blob/main/LICENSE
+
+
 #include "Json.h"
 
 
