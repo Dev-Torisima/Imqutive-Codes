@@ -33,7 +33,6 @@ void VectorSkipAndTake(const std::vector<T>& in, std::vector<T>& out, int offset
     {
         for (int i = offset; i < size + offset; i++)
         {
-            //throw;
             out[i - offset] = in[i];
         }
     }
