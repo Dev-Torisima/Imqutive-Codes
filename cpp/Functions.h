@@ -1,3 +1,7 @@
+//Functions.h
+//Created by Torisima 2025
+//License : https://github.com/Dev-Torisima/Imqutive-Codes/blob/main/LICENSE
+
 #pragma once
 
 #include <vector>
