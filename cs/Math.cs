@@ -582,7 +582,7 @@ namespace Imqutive
         public static double[] Simultaneous(params double[][] fact)
         {
             int hl = fact[0].Length;
-            for (int i = 1; i < fact.Length)
+            for (int i = 1; i < fact.Length;)
             {
                 if (hl != fact[i].Length) return new double[0];
             }
@@ -604,7 +604,7 @@ namespace Imqutive
                         hh[i] = fact[i][hl];
                     }
                     //double _d0 = m.Det();
-                    Matrix mc = new Matrix();
+                    Matrix mc;
                     for (int i = 0; i < hl; i++)
                     {
                         mc = m.Copy();
