@@ -39,7 +39,7 @@ allowd2 = [
 
 
 
-# URL変換ルール（サブディレクトリ対応）
+# url change rule
 def format_url(rel_path, idff):
     name, ext = os.path.splitext(rel_path)
 
@@ -88,7 +88,7 @@ def indent(elem, level=0):
         if level and (not elem.tail or not elem.tail.strip()):
             elem.tail = i
 
-# sitemap.xml の生成
+# generate sitemap.xml
 def generate_sitemap(folder):
     urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
 
@@ -110,7 +110,7 @@ def generate_sitemap(folder):
     tree = ET.ElementTree(urlset)
     tree.write(os.path.join(folder, "sitemap.xml"), encoding="utf-8", xml_declaration=True)
 
-# feed.xml の生成（RSS 2.0）
+# generate feed.xml (RSS 2.0)
 def generate_feed(folder):
     rss = ET.Element("rss", version="2.0")
     channel = ET.SubElement(rss, "channel")
@@ -148,7 +148,8 @@ def generate_feed(folder):
     tree.write(os.path.join(folder, "feed.xml"), encoding="utf-8", xml_declaration=True)
 
 
-# 実行
+# execute
 generate_sitemap(folder_path)
 generate_feed(folder_path)
+
 
