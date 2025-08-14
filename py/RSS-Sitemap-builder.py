@@ -18,17 +18,17 @@ site_name = ""
 # site description
 site_desc = ""
 
-# 除外するファイルパス
+# 除外する file path
 expaths = [
     
 ]
 
-# Sitemapとfeed両方で許される拡張子
+# 拡張子 allpwed in both of sitemap and feed
 allowd1 = [
     ".txt"
 ]
 
-# Sitemapだけで許される追加の拡張子
+# additional 拡張子 allowed only in sitemap
 allowd2 = [
     ".png",
     ".jpeg",
@@ -151,3 +151,4 @@ def generate_feed(folder):
 # 実行
 generate_sitemap(folder_path)
 generate_feed(folder_path)
+
