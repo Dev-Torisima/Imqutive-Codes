@@ -1,3 +1,6 @@
+# Codes to request Indexnow
+# copyright (c) Imqutive 2025
+
 import requests
 
 # Domain name
@@ -50,4 +53,5 @@ if __name__ == "__main__":
         urls=_urls,
         key=_key,
         key_location=_keyloc
+
     )
