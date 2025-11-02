@@ -1,6 +1,5 @@
 //ImageConverter.cs
 //Created by Torisima 2025
-//License : https://github.com/Dev-Torisima/Imqutive-Codes/blob/main/LICENSE
 //Using : BitChanger.cs
 
 using System;
