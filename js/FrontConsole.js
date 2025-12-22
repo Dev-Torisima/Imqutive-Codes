@@ -1,7 +1,10 @@
 //--Imqutive Front Console System--//
 //--Version 2025.12.20--//
 //--Copyright (c) Torisima 2025--//
-//--Licensed under MIT License
+//--Licensed under MIT License--//
+//
+//--If you use without editting, you should use "<script src="https://res.tools.imqutive.f5.si/source/FrontConsole.js"></script>".--//
+//--If not, you can change this under MIT License.--//
 //
 //--Position of this code block should be, at last if you do not have to use your style, at first if you have to use your style--//
 //--Mostly, you have to set only back system codes.--//
