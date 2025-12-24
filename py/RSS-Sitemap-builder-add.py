@@ -1,5 +1,4 @@
 # RSS-Sitemap-builder-add.py
-# copyright (c) Imqutive 2025
 # additional codes to zip
 
 import zipfile
