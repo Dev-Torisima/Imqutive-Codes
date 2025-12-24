@@ -1,5 +1,4 @@
 # RSS-Sitemap-builder (feed.xml, sitemap.xml)
-# copyright (c) Imqutive 2025
 
 # pip install beautifulsoup4
 
@@ -151,5 +150,6 @@ def generate_feed(folder):
 # execute
 generate_sitemap(folder_path)
 generate_feed(folder_path)
+
 
 
