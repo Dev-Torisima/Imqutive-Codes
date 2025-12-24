@@ -1,22 +1,25 @@
-# Codes to request Indexnow
-# copyright (c) Imqutive 2025
+#Codes to request Indexnow
+#Copyright (c) Imqutive 2025
 
 import requests
 
-# Domain name
+#Domain name
 _host = "example.com"
 
-# Relative Path
-_paths = [
+#Relative Path
+_paths = []
 
-    ]
+#protocol
 protocol = "https"
+
+#gen urls
 _urls = [f"{protocol}://{_host}{path}" for path in _paths]
 
-# IndexNow API Key
+#API Key
 _key = ""
 _keyloc = f"https://{_host}/{_key}.txt"
 
+#send 
 def send_indexnow_dual(host: str, urls: list, key: str, key_location: str):
     indexnow_endpoint = "https://api.indexnow.org/indexnow"
     payload_all = {
@@ -47,11 +50,5 @@ def send_indexnow_dual(host: str, urls: list, key: str, key_location: str):
             print(f"❌ IndexNow-Bing(GET): {url} - {resp_bing.status_code}")
             print(resp_bing.text)
 
-if __name__ == "__main__":
-    send_indexnow_dual(
-        host=_host,
-        urls=_urls,
-        key=_key,
-        key_location=_keyloc
-
-    )
+#execute
+send_indexnow_dual(host=_host,urls=_urls,key=_key,key_location=_keyloc)
