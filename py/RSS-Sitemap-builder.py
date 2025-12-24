@@ -7,62 +7,41 @@ import datetime
 import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 
-
-# target folder path
+#target folder path
 folder_path = "C:\\~"
-# site base url
+#site base url
 base_url = "https://example.com"
-# site name
+#site name
 site_name = ""
-# site description
+#site description
 site_desc = ""
 
-# 除外する file path
-expaths = [
-    
-]
-
-# 拡張子 allpwed in both of sitemap and feed
-allowd1 = [
-    ".txt"
-]
-
-# additional 拡張子 allowed only in sitemap
-allowd2 = [
-    ".png",
-    ".jpeg",
-    ".mp4",
-    ".tiff",
-    ".ico"
-]
-
-
+#除外する file path
+expaths = []
+#拡張子 allpwed in both of sitemap and feed
+allowd1 = [".txt"]
+#additional 拡張子 allowed only in sitemap
+allowd2 = [".png",".jpeg",".mp4",".tiff",".ico"]
 
 # url change rule
 def format_url(rel_path, idff):
     name, ext = os.path.splitext(rel_path)
-
     if (rel_path in expaths):
         return None
-
     if ext == ".html" or ext == ".htm" or ext == ".php":
         if rel_path.endswith("index.html") or rel_path.endswith("index.htm") or rel_path.endswith("index.php"):
             if os.path.dirname(name).replace("\\", "/") == "":
                 return "/"
-
             return "/" + os.path.dirname(name).replace("\\", "/") + "/"
         return "/" + name.replace("\\", "/")
-
     elif allowd1.count(ext) > 0:
         return "/" + rel_path.replace("\\", "/")
-
     elif (idff == 1) and (allowd2.count(ext) > 0):
         return "/" + rel_path.replace("\\", "/")
-
     else:
         return None
 
-# HTMLの<title>タグ抽出
+# get html <title> tag
 def extract_html_title(filepath):
     try:
         with open(filepath, "r", encoding="utf-8") as f:
@@ -70,10 +49,10 @@ def extract_html_title(filepath):
             title_tag = soup.find("title")
             return title_tag.text.strip() if title_tag else None
     except Exception as e:
-        print(f"タイトル取得失敗: {filepath} → {e}")
+        print(f"Failed to get title: {filepath} → {e}")
         return None
 
-# XML整形（インデント追加）
+#add indent xml
 def indent(elem, level=0):
     i = "\n" + level * "  "
     if len(elem):
@@ -90,13 +69,11 @@ def indent(elem, level=0):
 # generate sitemap.xml
 def generate_sitemap(folder):
     urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
-
     for root, dirs, files in os.walk(folder):
         for filename in files:
             file_path = os.path.join(root, filename)
             rel_path = os.path.relpath(file_path, folder)
             url_path = format_url(rel_path, 1)
-
             if url_path:
                 url = ET.SubElement(urlset, "url")
                 ET.SubElement(url, "loc").text = base_url + url_path
@@ -104,7 +81,6 @@ def generate_sitemap(folder):
                 mod_time = os.path.getmtime(file_path)
                 lastmod_date = datetime.datetime.fromtimestamp(mod_time).date().isoformat()
                 ET.SubElement(url, "lastmod").text = lastmod_date
-
     indent(urlset)
     tree = ET.ElementTree(urlset)
     tree.write(os.path.join(folder, "sitemap.xml"), encoding="utf-8", xml_declaration=True)
@@ -118,12 +94,11 @@ def generate_feed(folder):
     ET.SubElement(channel, "link").text = base_url
     ET.SubElement(channel, "description").text = site_desc
 
-    for root, dirs, files in os.walk(folder):
+    for root, dir, files in os.walk(folder):
         for filename in files:
             file_path = os.path.join(root, filename)
             rel_path = os.path.relpath(file_path, folder)
             url_path = format_url(rel_path, 2)
-
             if url_path:
                 item = ET.SubElement(channel, "item")
                 ext = os.path.splitext(filename)[1]
@@ -141,15 +116,10 @@ def generate_feed(folder):
                 mod_time = os.path.getmtime(file_path)
                 pub_date = datetime.datetime.fromtimestamp(mod_time).strftime("%a, %d %b %Y %H:%M:%S +0900")
                 ET.SubElement(item, "pubDate").text = pub_date
-
     indent(rss)
     tree = ET.ElementTree(rss)
     tree.write(os.path.join(folder, "feed.xml"), encoding="utf-8", xml_declaration=True)
 
-
 # execute
 generate_sitemap(folder_path)
 generate_feed(folder_path)
-
-
-
