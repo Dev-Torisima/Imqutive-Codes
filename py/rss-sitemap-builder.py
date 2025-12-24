@@ -1,11 +1,9 @@
 # RSS-Sitemap-builder (feed.xml, sitemap.xml)
 
-# pip install beautifulsoup4
-
 import os
 import datetime
 import xml.etree.ElementTree as ET
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup #pip install beautifulsoup4
 
 #target folder path
 folder_path = "C:\\~"
@@ -123,3 +121,4 @@ def generate_feed(folder):
 # execute
 generate_sitemap(folder_path)
 generate_feed(folder_path)
+
