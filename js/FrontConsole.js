@@ -1,5 +1,5 @@
 //--Imqutive Front Console System--//
-//--Version 2025.12.20--//
+//--Version 2026.01.07--//
 //--Copyright (c) Torisima 2025--//
 //--Licensed under MIT License--//
 //
@@ -22,19 +22,20 @@ document.documentElement.style.setProperty('--font-size', '16px');
 
 ////Style Setting (Change in your code)
 document.body.style.overflowX = 'hidden';document.body.style.overflowY = 'hidden';document.body.style.margin = '0';document.body.style.padding = '0';document.body.style.backgroundColor = 'var(--background-color)';document.body.style.color = 'var(--foreground-color)';document.body.style.fontSize = 'var(--font-size)';
-CUI_outputer.style.overflowX = 'hidden';CUI_outputer.style.overflowY = 'auto';CUI_outputer.style.whiteSpace = 'pre-wrap';CUI_outputer.style.position = 'absolute';CUI_outputer.style.width = '100vw';CUI_outputer.style.height = '100vh';CUI_outputer.style.top = '0';CUI_outputer.style.left = '0';CUI_outputer.style.border = '0px solid transparent';CUI_outputer.style.textWrap = 'wrap auto';CUI_outputer.style.margin = '0';CUI_outputer.style.padding = '25px';CUI_outputer.style.outline = '0';CUI_outputer.style.backgroundColor = 'var(--background-color)';
+CUI_outputer.style.overflowX = 'hidden';CUI_outputer.style.overflowY = 'auto';CUI_outputer.style.whiteSpace = 'pre-wrap';CUI_outputer.style.position = 'absolute';CUI_outputer.style.width = '100vw';CUI_outputer.style.height = '100vh';CUI_outputer.style.top = '0';CUI_outputer.style.left = '0';CUI_outputer.style.border = '0px solid transparent';CUI_outputer.style.textWrap = 'wrap auto';CUI_outputer.style.margin = '0';CUI_outputer.style.padding = '25px';CUI_outputer.style.outline = '0';CUI_outputer.style.backgroundColor = 'var(--background-color)';CUI_outputer.style.fontSize = 'var(--font-size)';
 
 //Internal Var
 var CUI_ining = -1;
 
 //Write CUI output Function (text : str | out text)
-function write_CUI(text) 
+function write_CUI(text, sc=true) 
 {
     CUI_outputer.value += text;
+    if (sc) {scroll_CUI();}
 }
 
 //Write CUI output by delay Function (text : str | out text, time : num | delay time)
-async function write_CUI_D(text, time) 
+async function write_CUI_D(text, time, sc=true) 
 {
     return new Promise((resolve)=>
     {
@@ -43,6 +44,7 @@ async function write_CUI_D(text, time)
     {
         CUI_outputer.value += text[CUI_INDEX];
         CUI_INDEX++;
+        if (sc) {scroll_CUI();}
         if (CUI_INDEX == text.length)
     {
         clearInterval(CUI_THREAD);
