@@ -1,6 +1,6 @@
 //--Imqutive Front Console System--//
 //--Version 2026.01.07--//
-//--Copyright (c) Torisima 2025--//
+//--Copyright (c) Imqutive 2026--//
 //--Licensed under MIT License--//
 //
 //--If you use without editting, you should use "<script src="https://res.tools.imqutive.f5.si/source/FrontConsole.js"></script>".--//
