@@ -34,7 +34,7 @@ function write_CUI(text, sc=true)
     if (sc) {scroll_CUI();}
 }
 
-//Write CUI output by delay Function (text : str | out text, time : num | delay time)
+//Write CUI output with delay Function (text : str | out text, time : num | delay time)
 async function write_CUI_D(text, time, sc=true) 
 {
     return new Promise((resolve)=>
